@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 mc:Ignorable="d"
+                 x:Class="InitiativeTracker.Popups.CreatureEditorPopup"
+                 BackgroundColor="{StaticResource PrimaryColor}"
+                 BackgroundClicked="OnCancelled"
+                 Padding="200,50">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Text="Name"
+               TextColor="{StaticResource PrimaryTextColor}"
+               Grid.Row="0"
+               Grid.Column="0"/>
+        <Entry Text="{Binding Name, Mode=TwoWay}"
+               TextColor="{StaticResource PrimaryTextColor}"
+               Grid.Row="0"
+               Grid.Column="1"/>
+        <Label Text="Armor Class"
+               TextColor="{StaticResource PrimaryTextColor}"
+               Grid.Row="1"
+               Grid.Column="0"/>
+        <Entry Text="{Binding ArmorClass, Mode=TwoWay}"
+               TextColor="{StaticResource PrimaryTextColor}"
+               Grid.Row="1"
+               Grid.Column="1"/>
+        <Label Text="Passive Perception"
+               TextColor="{StaticResource PrimaryTextColor}"
+               Grid.Row="2"
+               Grid.Column="0"/>
+        <Entry Text="{Binding PassivePerception, Mode=TwoWay}"
+               TextColor="{StaticResource PrimaryTextColor}"
+               Grid.Row="2"
+               Grid.Column="1"/>
+        <Label Text="Passive Investigation"
+               TextColor="{StaticResource PrimaryTextColor}"
+               Grid.Row="3"
+               Grid.Column="0"/>
+        <Entry Text="{Binding PassiveInvestigation, Mode=TwoWay}"
+               TextColor="{StaticResource PrimaryTextColor}"
+               Grid.Row="3"
+               Grid.Column="1"/>
+        <Label Text="Passive Insight"
+               TextColor="{StaticResource PrimaryTextColor}"
+               Grid.Row="4"
+               Grid.Column="0"/>
+        <Entry Text="{Binding PassiveInsight, Mode=TwoWay}"
+               TextColor="{StaticResource PrimaryTextColor}"
+               Grid.Row="4"
+               Grid.Column="1"/>
+        <Label Text="Background Color"
+               TextColor="{StaticResource PrimaryTextColor}"
+               Grid.Row="5"
+               Grid.Column="0"/>
+        <Entry Text="{Binding BackgroundColor, Mode=TwoWay}"
+               TextColor="{StaticResource PrimaryTextColor}"
+               Grid.Row="5"
+               Grid.Column="1"/>
+        <Label Text="Accent Color"
+               TextColor="{StaticResource PrimaryTextColor}"
+               Grid.Row="6"
+               Grid.Column="0"/>
+        <Entry Text="{Binding AccentColor, Mode=TwoWay}"
+               TextColor="{StaticResource PrimaryTextColor}"
+               Grid.Row="6"
+               Grid.Column="1"/>
+        <StackLayout Grid.Row="7"
+                     Grid.Column="0"
+                     Grid.ColumnSpan="2"
+                     HorizontalOptions="Center">
+            <Button Text="Confirm Creation"
+                    BackgroundColor="{StaticResource SecondaryColor}"
+                    TextColor="{StaticResource SecondaryTextColor}"
+                    Clicked="OnDoneEditing"/>
+        </StackLayout>
+    </Grid>
+</pages:PopupPage>

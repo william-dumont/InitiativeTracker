@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:InitiativeTracker.Views"
+             mc:Ignorable="d"
+             x:Class="InitiativeTracker.Pages.InitiativeTrackerPage">
+    <ContentPage.Content>
+        <Grid RowSpacing="0"
+              ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <views:CreatureBoardView ItemsSource="{Binding CreatureLibrary}"
+                                     Grid.Column="0"/>
+            <views:InitiativeBoardView Grid.Column="1"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

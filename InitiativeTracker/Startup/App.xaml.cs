@@ -1,8 +1,9 @@
-﻿using System;
+﻿using InitiativeTracker.Pages;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace InitiativeTracker
+namespace InitiativeTracker.Startup
 {
     public partial class App : Application
     {
@@ -10,7 +11,7 @@ namespace InitiativeTracker
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new InitiativeTrackerPage();
         }
 
         protected override void OnStart()

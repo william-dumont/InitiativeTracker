@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InitiativeTracker.iOS", "In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InitiativeTracker", "InitiativeTracker\InitiativeTracker.csproj", "{A9B20889-2230-4100-B64D-6485CA2A3206}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "..\DataLayer\DataLayer.csproj", "{8FDF2B32-B6FE-4266-9652-EABD49F79375}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,18 @@ Global
 		{A9B20889-2230-4100-B64D-6485CA2A3206}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{A9B20889-2230-4100-B64D-6485CA2A3206}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{A9B20889-2230-4100-B64D-6485CA2A3206}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
+		{8FDF2B32-B6FE-4266-9652-EABD49F79375}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FDF2B32-B6FE-4266-9652-EABD49F79375}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FDF2B32-B6FE-4266-9652-EABD49F79375}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{8FDF2B32-B6FE-4266-9652-EABD49F79375}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{8FDF2B32-B6FE-4266-9652-EABD49F79375}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{8FDF2B32-B6FE-4266-9652-EABD49F79375}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{8FDF2B32-B6FE-4266-9652-EABD49F79375}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FDF2B32-B6FE-4266-9652-EABD49F79375}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FDF2B32-B6FE-4266-9652-EABD49F79375}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{8FDF2B32-B6FE-4266-9652-EABD49F79375}.Release|iPhone.Build.0 = Release|Any CPU
+		{8FDF2B32-B6FE-4266-9652-EABD49F79375}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{8FDF2B32-B6FE-4266-9652-EABD49F79375}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
