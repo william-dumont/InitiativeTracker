@@ -7,32 +7,52 @@
              mc:Ignorable="d"
              x:Class="InitiativeTracker.Views.CreatureBoardView"
              x:Name="Self"
-             BackgroundColor="{StaticResource PrimaryColor}"
-             Padding="10">
-  <ContentView.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+             BackgroundColor="{StaticResource PrimaryColor}">
+    <ContentView.Content>
+        <StackLayout Spacing="0">
+            <Grid BackgroundColor="{StaticResource PrimaryDarkColor}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Library"
+                           TextColor="{StaticResource PrimaryTextColor}"
+                           VerticalOptions="Center"
+                           FontSize="Medium"
+                           VerticalTextAlignment="Center"
+                           Grid.Column="0"
+                           Margin="10"/>
+                <Button Text="+"
+                        BackgroundColor="{StaticResource PrimaryColor}"
+                        TextColor="{StaticResource PrimaryTextColor}"
+                        FontSize="Title"
+                        Padding="0"
+                        CornerRadius="0"
+                        Grid.Column="1"
+                        Clicked="AddCreature"/>
+            </Grid>
             <CollectionView ItemsSource="{Binding ItemsSource, Source={x:Reference Self}}"
-                            Grid.Row="0">
+                            Margin="10,0"
+                            x:Name="ItemsView">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout ItemSpacing="10"
-                                   Orientation="Vertical"/>
+                                       Orientation="Vertical"/>
                 </CollectionView.ItemsLayout>
+                <CollectionView.Header>
+                    <BoxView HeightRequest="0"/>
+                </CollectionView.Header>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <views:CreatureCellView/>
+                        <views:CreatureCellView OnAdded="AddToInitiativeBoard"
+                                                OnDeleted="DeleteCreature"
+                                                OnRaised="Raise"
+                                                OnLowered="Lower"/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Button BackgroundColor="{StaticResource SecondaryColor}"
-                    Text="Add Creature"
-                    Padding="0"
-                    TextColor="{StaticResource SecondaryTextColor}"
-                    Command="{Binding AddCreatureCommand}"
-                    Grid.Row="1"/>
-        </Grid>
+        </StackLayout>
     </ContentView.Content>
 </ContentView>

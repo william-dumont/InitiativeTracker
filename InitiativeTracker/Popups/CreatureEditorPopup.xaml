@@ -6,88 +6,87 @@
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  mc:Ignorable="d"
                  x:Class="InitiativeTracker.Popups.CreatureEditorPopup"
-                 BackgroundColor="{StaticResource PrimaryColor}"
-                 BackgroundClicked="OnCancelled"
-                 Padding="200,50">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Label Text="Name"
-               TextColor="{StaticResource PrimaryTextColor}"
-               Grid.Row="0"
-               Grid.Column="0"/>
-        <Entry Text="{Binding Name, Mode=TwoWay}"
-               TextColor="{StaticResource PrimaryTextColor}"
-               Grid.Row="0"
-               Grid.Column="1"/>
-        <Label Text="Armor Class"
-               TextColor="{StaticResource PrimaryTextColor}"
-               Grid.Row="1"
-               Grid.Column="0"/>
-        <Entry Text="{Binding ArmorClass, Mode=TwoWay}"
-               TextColor="{StaticResource PrimaryTextColor}"
-               Grid.Row="1"
-               Grid.Column="1"/>
-        <Label Text="Passive Perception"
-               TextColor="{StaticResource PrimaryTextColor}"
-               Grid.Row="2"
-               Grid.Column="0"/>
-        <Entry Text="{Binding PassivePerception, Mode=TwoWay}"
-               TextColor="{StaticResource PrimaryTextColor}"
-               Grid.Row="2"
-               Grid.Column="1"/>
-        <Label Text="Passive Investigation"
-               TextColor="{StaticResource PrimaryTextColor}"
-               Grid.Row="3"
-               Grid.Column="0"/>
-        <Entry Text="{Binding PassiveInvestigation, Mode=TwoWay}"
-               TextColor="{StaticResource PrimaryTextColor}"
-               Grid.Row="3"
-               Grid.Column="1"/>
-        <Label Text="Passive Insight"
-               TextColor="{StaticResource PrimaryTextColor}"
-               Grid.Row="4"
-               Grid.Column="0"/>
-        <Entry Text="{Binding PassiveInsight, Mode=TwoWay}"
-               TextColor="{StaticResource PrimaryTextColor}"
-               Grid.Row="4"
-               Grid.Column="1"/>
-        <Label Text="Background Color"
-               TextColor="{StaticResource PrimaryTextColor}"
-               Grid.Row="5"
-               Grid.Column="0"/>
-        <Entry Text="{Binding BackgroundColor, Mode=TwoWay}"
-               TextColor="{StaticResource PrimaryTextColor}"
-               Grid.Row="5"
-               Grid.Column="1"/>
-        <Label Text="Accent Color"
-               TextColor="{StaticResource PrimaryTextColor}"
-               Grid.Row="6"
-               Grid.Column="0"/>
-        <Entry Text="{Binding AccentColor, Mode=TwoWay}"
-               TextColor="{StaticResource PrimaryTextColor}"
-               Grid.Row="6"
-               Grid.Column="1"/>
-        <StackLayout Grid.Row="7"
-                     Grid.Column="0"
-                     Grid.ColumnSpan="2"
-                     HorizontalOptions="Center">
-            <Button Text="Confirm Creation"
-                    BackgroundColor="{StaticResource SecondaryColor}"
-                    TextColor="{StaticResource SecondaryTextColor}"
-                    Clicked="OnDoneEditing"/>
+                 BackgroundClicked="OnCancelled">
+    <Frame BackgroundColor="{StaticResource PrimaryColor}"
+           HorizontalOptions="Center"
+           VerticalOptions="Center"
+           Padding="0"
+           CornerRadius="10">
+        <StackLayout Spacing="0">
+            <Label Text="Creature Edition"
+                   TextColor="{StaticResource PrimaryTextColor}"
+                   BackgroundColor="{StaticResource PrimaryDarkColor}"
+                   FontSize="Large"
+                   Padding="10"/>
+            <BoxView BackgroundColor="{StaticResource SecondaryColor}"
+                     HeightRequest="5"/>
+            <Grid Padding="20,0,20,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Name"
+                       TextColor="{StaticResource PrimaryTextColor}"
+                       VerticalOptions="Center"
+                       Grid.Row="0"
+                       Grid.Column="0"/>
+                <Entry Text="{Binding Name, Mode=TwoWay}"
+                       TextColor="{StaticResource PrimaryTextColor}"
+                       Grid.Row="0"
+                       Grid.Column="2"
+                       Completed="NameCompleted"/>
+                <Label Text="Armor Class"
+                       TextColor="{StaticResource PrimaryTextColor}"
+                       VerticalOptions="Center"
+                       Grid.Row="1"
+                       Grid.Column="0"/>
+                <Entry Text="{Binding ArmorClass, Mode=TwoWay}"
+                       TextColor="{StaticResource PrimaryTextColor}"
+                       Grid.Row="1"
+                       Grid.Column="2"
+                       Completed="ArmorClassCompleted"
+                       x:Name="ArmorClassEntry"/>
+                <Label Text="Passive Perception"
+                       TextColor="{StaticResource PrimaryTextColor}"
+                       VerticalOptions="Center"
+                       Grid.Row="2"
+                       Grid.Column="0"/>
+                <Entry Text="{Binding PassivePerception, Mode=TwoWay}"
+                       TextColor="{StaticResource PrimaryTextColor}"
+                       Grid.Row="2"
+                       Grid.Column="2"
+                       Completed="PassivePerceptionCompleted"
+                       x:Name="PassivePerceptionEntry"/>
+                <Label Text="Passive Investigation"
+                       TextColor="{StaticResource PrimaryTextColor}"
+                       VerticalOptions="Center"
+                       Grid.Row="3"
+                       Grid.Column="0"/>
+                <Entry Text="{Binding PassiveInvestigation, Mode=TwoWay}"
+                       TextColor="{StaticResource PrimaryTextColor}"
+                       Grid.Row="3"
+                       Grid.Column="2"
+                       Completed="PassiveInvestigationCompleted"
+                       x:Name="PassiveInvestigationEntry"/>
+                <Label Text="Passive Insight"
+                       TextColor="{StaticResource PrimaryTextColor}"
+                       VerticalOptions="Center"
+                       Grid.Row="4"
+                       Grid.Column="0"/>
+                <Entry Text="{Binding PassiveInsight, Mode=TwoWay}"
+                       TextColor="{StaticResource PrimaryTextColor}"
+                       Grid.Row="4"
+                       Grid.Column="2"
+                       x:Name="PassiveInsightEntry"/>
+            </Grid>
         </StackLayout>
-    </Grid>
+    </Frame>
 </pages:PopupPage>

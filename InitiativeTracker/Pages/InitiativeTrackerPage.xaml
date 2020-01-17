@@ -11,11 +11,16 @@
               ColumnSpacing="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <views:CreatureBoardView ItemsSource="{Binding CreatureLibrary}"
                                      Grid.Column="0"/>
-            <views:InitiativeBoardView Grid.Column="1"/>
+            <BoxView WidthRequest="5"
+                     VerticalOptions="FillAndExpand"
+                     BackgroundColor="{StaticResource SecondaryColor}"
+                     Grid.Column="1"/>
+            <views:InitiativeBoardView Grid.Column="2"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

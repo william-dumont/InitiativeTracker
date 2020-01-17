@@ -6,4 +6,20 @@
              mc:Ignorable="d"
              x:Class="InitiativeTracker.Views.InitiativeBoardView"
              BackgroundColor="{StaticResource PrimaryLightColor}">
+    <Grid ColumnSpacing="0"
+          RowSpacing="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <BoxView BackgroundColor="{StaticResource PrimaryColor}"
+                 Grid.Column="1"/>
+        <StackLayout BackgroundColor="{StaticResource SecondaryColor}"
+                     Grid.Column="2"
+                     Spacing="0">
+            <Button Text="R"
+                    TextColor="{StaticResource SecondaryTextColor}"/>
+        </StackLayout>
+    </Grid>
 </ContentView>

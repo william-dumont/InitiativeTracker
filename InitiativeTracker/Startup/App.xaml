@@ -6,13 +6,15 @@
              mc:Ignorable="d"
              x:Class="InitiativeTracker.Startup.App">
     <Application.Resources>
-        <Color x:Key="PrimaryColor">#263238</Color>
-        <Color x:Key="PrimaryLightColor">#4f5b62</Color>
-        <Color x:Key="PrimaryDarkColor">#000a12</Color>
+        <Color x:Key="PrimaryColor">#424242</Color>
+        <Color x:Key="PrimaryLightColor">#6d6d6d</Color>
+        <Color x:Key="PrimaryDarkColor">#1b1b1b</Color>
         <Color x:Key="SecondaryColor">#b71c1c</Color>
         <Color x:Key="SecondaryLightColor">#f05545</Color>
         <Color x:Key="SecondaryDarkColor">#7f0000</Color>
         <Color x:Key="PrimaryTextColor">#ffffff</Color>
         <Color x:Key="SecondaryTextColor">#ffffff</Color>
+        <x:String x:Key="PrimaryTextColorHex">#ffffff</x:String>
+        <x:String x:Key="SecondaryTextColorHex">#ffffff</x:String>
     </Application.Resources>
 </Application>

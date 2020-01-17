@@ -3,29 +3,68 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              mc:Ignorable="d"
              x:Class="InitiativeTracker.Views.CreatureCellView">
-  <ContentView.Content>
-        <Frame CornerRadius="5"
-               Padding="10"
-               BackgroundColor="{Binding BackgroundColor}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Frame CornerRadius="5"
-                       BackgroundColor="{Binding AccentColor}"
-                       Grid.Column="0"/>
-                <Label Text="{Binding Name}"
-                       TextColor="{StaticResource PrimaryTextColor}"
-                       VerticalOptions="Fill"
-                       VerticalTextAlignment="Center"
-                       Grid.Column="1"/>
-                <ImageButton Grid.Column="2"
-                             BackgroundColor="Accent"/>
-            </Grid>
-        </Frame>
-  </ContentView.Content>
+    <ContentView.Content>
+        <SwipeView>
+            <SwipeView.LeftItems>
+                <SwipeItems Mode="Execute">
+                    <SwipeItem Text="Add"
+                               IconImageSource="plus"
+                               Invoked="Add"
+                               BackgroundColor="{StaticResource PrimaryLightColor}"/>
+                </SwipeItems>
+            </SwipeView.LeftItems>
+            <SwipeView.RightItems>
+                <SwipeItems Mode="Execute">
+                    <SwipeItem Text="Delete"
+                               IconImageSource="trash"
+                               Invoked="Delete"
+                               BackgroundColor="{StaticResource SecondaryLightColor}"/>
+                </SwipeItems>
+            </SwipeView.RightItems>
+            <SwipeView.TopItems>
+                <SwipeItems Mode="Execute">
+                    <SwipeItem Text="Down"
+                               IconImageSource="down"
+                               Invoked="Lower"
+                               BackgroundColor="{StaticResource SecondaryLightColor}"/>
+                </SwipeItems>
+            </SwipeView.TopItems>
+            <SwipeView.BottomItems>
+                <SwipeItems Mode="Execute">
+                    <SwipeItem Text="Up"
+                               Invoked="Raise"
+                               IconImageSource="up"
+                               BackgroundColor="{StaticResource SecondaryLightColor}"/>
+                </SwipeItems>
+            </SwipeView.BottomItems>
+            <Frame CornerRadius="5"
+                   Padding="10"
+                   BackgroundColor="{StaticResource SecondaryColor}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <forms:CachedImage Source="bars"
+                                       DownsampleToViewSize="True">
+                        <forms:CachedImage.Transformations>
+                            <transformations:TintTransformation EnableSolidColor="True"
+                                                                HexColor="{StaticResource SecondaryTextColorHex}"/>
+                        </forms:CachedImage.Transformations>
+                    </forms:CachedImage>
+                    <Label Text="{Binding Name}"
+                           TextColor="{StaticResource SecondaryTextColor}"
+                           FontSize="Medium"
+                           HorizontalTextAlignment="Start"
+                           VerticalOptions="Fill"
+                           VerticalTextAlignment="Center"
+                           Grid.Column="1"/>
+                </Grid>
+            </Frame>
+        </SwipeView>
+    </ContentView.Content>
 </ContentView>

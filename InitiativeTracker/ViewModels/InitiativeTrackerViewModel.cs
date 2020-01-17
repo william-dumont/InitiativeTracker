@@ -27,67 +27,32 @@ namespace InitiativeTracker.ViewModels
             }
         }
 
-        ICommand addCreatureCommand;
-        public ICommand AddCreatureCommand
-        {
-            get => addCreatureCommand;
-            set
-            {
-                addCreatureCommand = value;
-                OnPropertyChanged(nameof(AddCreatureCommand));
-            }
-        }
-
         public InitiativeTrackerViewModel()
         {
             CreatureLibrary = new ObservableCollection<Creature>()
             {
                 new Creature()
                 {
-                    Name = "Aura",
-                    BackgroundColor = Color.Red,
-                    AccentColor = Color.Yellow
+                    Name = "Aura"
                 },
                 new Creature()
                 {
-                    Name = "Kree",
-                    BackgroundColor = Color.Yellow,
-                    AccentColor = Color.White
+                    Name = "Kree"
                 },
                 new Creature()
                 {
-                    Name = "Leilani",
-                    BackgroundColor = Color.Teal,
-                    AccentColor = Color.Blue
+                    Name = "Leilani"
                 },
                 new Creature()
                 {
-                    Name = "Artur",
-                    BackgroundColor = Color.Brown,
-                    AccentColor = Color.Green
+                    Name = "Artur"
                 }
             };
-
-            AddCreatureCommand = new Command(() => CreateCreature());
         }
 
         void CreatureLibraryChanged(object sender, NotifyCollectionChangedEventArgs e) 
         {
             OnPropertyChanged(nameof(CreatureLibrary));
-        }
-
-        async void CreateCreature()
-        {
-            Creature creature = new Creature();
-            CreatureLibrary.Add(creature);
-            CreatureEditorPopup creatureEditorPopup = new CreatureEditorPopup(creature);
-            creatureEditorPopup.CreatureCreationCancelled += CreatureCreationCancelled;
-            await PopupNavigation.Instance.PushAsync(new CreatureEditorPopup(creature));
-        }
-
-        void CreatureCreationCancelled(object sender, Creature creature)
-        {
-            CreatureLibrary.Remove(creature);
         }
     }
 }

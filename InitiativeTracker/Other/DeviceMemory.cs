@@ -4,7 +4,7 @@ using System.Text;
 
 namespace InitiativeTracker.Other
 {
-    class DeviceMemory
+    public static class DeviceMemory
     {
     }
 }

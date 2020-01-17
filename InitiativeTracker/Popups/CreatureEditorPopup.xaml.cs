@@ -16,36 +16,46 @@ namespace InitiativeTracker.Popups
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CreatureEditorPopup : PopupPage
     {
-        public event EventHandler<Creature> CreatureCreationCancelled;
+        public event EventHandler EditionDone;
 
-        Creature creature;
-        public Creature Creature
-        {
-            get => creature;
-            set
-            {
-                creature = value;
-                OnPropertyChanged(nameof(Creature));
-            }
-        }
-
-
-        public CreatureEditorPopup(Creature creature)
+        public CreatureEditorPopup()
         {
             InitializeComponent();
-
-            Creature = creature;
-            BindingContext = Creature;
         }
 
         void OnCancelled(object sender, EventArgs e)
         {
-            CreatureCreationCancelled?.Invoke(this, creature);
+            PopupNavigation.Instance.PopAsync();
         }
 
-        void OnDoneEditing(object sender, EventArgs e)
+        void NameCompleted(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PopAsync();
+            ArmorClassEntry.Focus();
+            ArmorClassEntry.SelectionLength = ArmorClassEntry.Text.Length;
+        }
+
+        void ArmorClassCompleted(object sender, EventArgs e)
+        {
+            PassivePerceptionEntry.Focus();
+            PassivePerceptionEntry.SelectionLength = PassivePerceptionEntry.Text.Length;
+        }
+
+        void PassivePerceptionCompleted(object sender, EventArgs e)
+        {
+            PassiveInvestigationEntry.Focus();
+            PassiveInvestigationEntry.SelectionLength = PassiveInvestigationEntry.Text.Length;
+        }
+
+        void PassiveInvestigationCompleted(object sender, EventArgs e)
+        {
+            PassiveInsightEntry.Focus();
+            PassiveInsightEntry.SelectionLength = PassiveInsightEntry.Text.Length;
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            EditionDone?.Invoke(this, null);
         }
     }
 }

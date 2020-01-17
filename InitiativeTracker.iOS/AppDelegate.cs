@@ -5,6 +5,7 @@ using System.Linq;
 using Foundation;
 using InitiativeTracker.Startup;
 using UIKit;
+using Xamarin.Forms;
 
 namespace InitiativeTracker.iOS
 {
@@ -24,8 +25,10 @@ namespace InitiativeTracker.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             Rg.Plugins.Popup.Popup.Init();
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
 
-            global::Xamarin.Forms.Forms.Init();
+            Forms.SetFlags("SwipeView_Experimental");
+            Forms.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
