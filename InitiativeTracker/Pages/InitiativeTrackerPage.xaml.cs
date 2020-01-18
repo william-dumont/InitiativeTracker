@@ -20,5 +20,25 @@ namespace InitiativeTracker.Pages
 
             BindingContext = new InitiativeTrackerViewModel();
         }
+
+        double width, height;
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+
+            if (width != this.width || height != this.height)
+            {
+                this.width = width;
+                this.height = height;
+
+                if (width > height)
+                {
+                    InitiativeBoardDefinition.Width = new GridLength(3, GridUnitType.Star);
+                } else
+                {
+                    InitiativeBoardDefinition.Width = new GridLength(2, GridUnitType.Star);
+                }
+            }
+        }
     }
 }

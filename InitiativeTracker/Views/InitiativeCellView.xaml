@@ -6,8 +6,140 @@
              mc:Ignorable="d"
              x:Class="InitiativeTracker.Views.InitiativeCellView">
   <ContentView.Content>
-        <Frame CornerRadius="10">
-            
-        </Frame>
-  </ContentView.Content>
+        <SwipeView>
+            <SwipeView.RightItems>
+                <SwipeItems Mode="Execute">
+                    <SwipeItem Text="Remove"
+                               IconImageSource="minus"
+                               Invoked="Remove"
+                               BackgroundColor="{StaticResource SecondaryLightColor}"/>
+                    <SwipeItem BackgroundColor="{StaticResource SecondaryLightColor}"/>
+                </SwipeItems>
+            </SwipeView.RightItems>
+            <SwipeView.LeftItems>
+                <SwipeItems Mode="Reveal">
+                    <SwipeItem Text="Edit"
+                               IconImageSource="trash"
+                               Invoked="Edit"
+                               BackgroundColor="{StaticResource PrimaryLightColor}"/>
+                    <SwipeItem Text="Delete"
+                               IconImageSource="trash"
+                               Invoked="Delete"
+                               BackgroundColor="{StaticResource SecondaryLightColor}"/>
+                </SwipeItems>
+            </SwipeView.LeftItems>
+            <SwipeView.TopItems>
+                <SwipeItems Mode="Execute">
+                    <SwipeItem Text="Down"
+                               IconImageSource="down"
+                               Invoked="Lower"
+                               BackgroundColor="{StaticResource SecondaryLightColor}"/>
+                </SwipeItems>
+            </SwipeView.TopItems>
+            <SwipeView.BottomItems>
+                <SwipeItems Mode="Execute">
+                    <SwipeItem Text="Up"
+                               Invoked="Raise"
+                               IconImageSource="up"
+                               BackgroundColor="{StaticResource SecondaryLightColor}"/>
+                </SwipeItems>
+            </SwipeView.BottomItems>
+            <Frame CornerRadius="5"
+               BackgroundColor="{StaticResource PrimaryColor}"
+               Padding="10,5">
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="{Binding Name}"
+                       TextColor="{StaticResource SecondaryTextColor}"
+                       FontSize="Medium"
+                       VerticalTextAlignment="Center"
+                       Grid.Row="0"
+                       Grid.RowSpan="2"/>
+                    <Label Text="AC"
+                       TextColor="{StaticResource SecondaryTextColor}"
+                       FontSize="Micro"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       Grid.Row="0"
+                       Grid.Column="1"/>
+                    <Label Text="{Binding ArmorClass}"
+                       TextColor="{StaticResource SecondaryTextColor}"
+                       FontSize="Medium"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       Grid.Row="1"
+                       Grid.Column="1"/>
+                    <Label Text="PP"
+                       TextColor="{StaticResource SecondaryTextColor}"
+                       FontSize="Micro"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       Grid.Row="0"
+                       Grid.Column="2"/>
+                    <Label Text="{Binding PassivePerception}"
+                       TextColor="{StaticResource SecondaryTextColor}"
+                       FontSize="Medium"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       Grid.Row="1"
+                       Grid.Column="2"/>
+                    <Label Text="PV"
+                       TextColor="{StaticResource SecondaryTextColor}"
+                       FontSize="Micro"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       Grid.Row="0"
+                       Grid.Column="3"/>
+                    <Label Text="{Binding PassiveInvestigation}"
+                       TextColor="{StaticResource SecondaryTextColor}"
+                       FontSize="Medium"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       Grid.Row="1"
+                       Grid.Column="3"/>
+                    <Label Text="PI"
+                       TextColor="{StaticResource SecondaryTextColor}"
+                       FontSize="Micro"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       Grid.Row="0"
+                       Grid.Column="4"/>
+                    <Label Text="{Binding PassiveInsight}"
+                       TextColor="{StaticResource SecondaryTextColor}"
+                       FontSize="Medium"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       Grid.Row="1"
+                       Grid.Column="4"/>
+                    <Label Text="Initiative"
+                       TextColor="{StaticResource SecondaryTextColor}"
+                       FontSize="Micro"
+                       FontAttributes="Bold"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       Grid.Row="0"
+                       Grid.Column="5"/>
+                    <Label Text="{Binding RolledInitiative}"
+                       TextColor="{StaticResource SecondaryTextColor}"
+                       FontAttributes="Bold"
+                       FontSize="Medium"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       Grid.Row="1"
+                       Grid.Column="5"/>
+                </Grid>
+            </Frame>
+        </SwipeView>
+    </ContentView.Content>
 </ContentView>

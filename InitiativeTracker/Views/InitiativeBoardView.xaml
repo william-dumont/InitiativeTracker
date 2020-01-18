@@ -3,31 +3,43 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:InitiativeTracker.Views"
              mc:Ignorable="d"
              x:Class="InitiativeTracker.Views.InitiativeBoardView"
              BackgroundColor="{StaticResource PrimaryLightColor}"
              x:Name="Self">
     <Grid ColumnSpacing="0"
-          RowSpacing="0">
+          RowSpacing="0"
+          x:Name="LayoutGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <CollectionView Grid.Column="0"
-                        ItemsSource="{Binding ItemsSource, Source={x:Reference Self}}">
+                        ItemsSource="{Binding ItemsSource, Source={x:Reference Self}}"
+                        x:Name="InitiativeView">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Button Text="test"/>
+                    <StackLayout>
+                        <views:InitiativeCellView Margin="10,10,10,0"
+                                                  OnRemoved="RemoveFromInitiativeBoard"
+                                                  OnDeleted="DeleteCreature"
+                                                  OnRaised="Raise"
+                                                  OnLowered="Lower"
+                                                  OnEdited="EditCreature"/>
+                    </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
         <BoxView BackgroundColor="{StaticResource PrimaryColor}"
-                 Grid.Column="1"/>
+                 Grid.Column="1"
+                 x:Name="SeparatorView"/>
         <StackLayout BackgroundColor="{StaticResource SecondaryColor}"
                      Grid.Column="2"
                      Spacing="10"
-                     Padding="10">
+                     Padding="10"
+                     x:Name="ButtonsLayout">
             <Button Text="Roll Initiative"/>
         </StackLayout>
     </Grid>
