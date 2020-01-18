@@ -14,7 +14,7 @@
         <Color x:Key="SecondaryDarkColor">#7f0000</Color>
         <Color x:Key="PrimaryTextColor">#ffffff</Color>
         <Color x:Key="SecondaryTextColor">#ffffff</Color>
-        <x:String x:Key="PrimaryTextColorHex">#ffffff</x:String>
-        <x:String x:Key="SecondaryTextColorHex">#ffffff</x:String>
+        <x:String x:Key="PrimaryDarkColorHex">#1b1b1b</x:String>
+        <x:String x:Key="SecondaryDarkColorHex">#7f0000</x:String>
     </Application.Resources>
 </Application>

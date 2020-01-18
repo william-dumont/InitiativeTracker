@@ -15,12 +15,15 @@
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <views:CreatureBoardView ItemsSource="{Binding CreatureLibrary}"
+                                     AddToBoardCommand="{Binding AddToBoardCommand}"
                                      Grid.Column="0"/>
             <BoxView WidthRequest="5"
                      VerticalOptions="FillAndExpand"
                      BackgroundColor="{StaticResource SecondaryColor}"
                      Grid.Column="1"/>
-            <views:InitiativeBoardView Grid.Column="2"/>
+            <views:InitiativeBoardView ItemsSource="{Binding CreaturesInInitiative}"
+                                       RemoveFromBoardCommand="{Binding RemoveFromBoardCommand}"
+                                       Grid.Column="2"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

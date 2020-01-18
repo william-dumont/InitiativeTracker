@@ -1,5 +1,8 @@
-﻿using InitiativeTracker.Pages;
+﻿using DataLayer.Models;
+using InitiativeTracker.Other;
+using InitiativeTracker.Pages;
 using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

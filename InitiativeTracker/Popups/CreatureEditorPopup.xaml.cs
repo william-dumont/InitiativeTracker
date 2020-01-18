@@ -16,16 +16,9 @@ namespace InitiativeTracker.Popups
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CreatureEditorPopup : PopupPage
     {
-        public event EventHandler EditionDone;
-
         public CreatureEditorPopup()
         {
             InitializeComponent();
-        }
-
-        void OnCancelled(object sender, EventArgs e)
-        {
-            PopupNavigation.Instance.PopAsync();
         }
 
         void NameCompleted(object sender, EventArgs e)
@@ -50,12 +43,6 @@ namespace InitiativeTracker.Popups
         {
             PassiveInsightEntry.Focus();
             PassiveInsightEntry.SelectionLength = PassiveInsightEntry.Text.Length;
-        }
-
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-            EditionDone?.Invoke(this, null);
         }
     }
 }

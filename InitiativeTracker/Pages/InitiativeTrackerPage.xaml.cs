@@ -1,4 +1,5 @@
-﻿using InitiativeTracker.ViewModels;
+﻿using DataLayer.Models;
+using InitiativeTracker.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

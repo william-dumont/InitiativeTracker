@@ -1,4 +1,5 @@
 ﻿using DataLayer.Models;
+using InitiativeTracker.Other;
 using InitiativeTracker.Popups;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -27,32 +28,74 @@ namespace InitiativeTracker.ViewModels
             }
         }
 
+        ObservableCollection<Creature> creaturesInInitiative;
+        public ObservableCollection<Creature> CreaturesInInitiative
+        {
+            get => creaturesInInitiative;
+            set
+            {
+                creaturesInInitiative = value;
+                creaturesInInitiative.CollectionChanged += CreatureLibraryChanged;
+                OnPropertyChanged(nameof(CreaturesInInitiative));
+            }
+        }
+
+        ICommand addToBoardCommand;
+        public ICommand AddToBoardCommand
+        {
+            get => addToBoardCommand;
+            set
+            {
+                addToBoardCommand = value;
+                OnPropertyChanged(nameof(AddToBoardCommand));
+            }
+        }
+
+        ICommand removeFromBoardCommand;
+        public ICommand RemoveFromBoardCommand
+        {
+            get => removeFromBoardCommand;
+            set
+            {
+                removeFromBoardCommand = value;
+                OnPropertyChanged(nameof(RemoveFromBoardCommand));
+            }
+        }
+
         public InitiativeTrackerViewModel()
         {
-            CreatureLibrary = new ObservableCollection<Creature>()
-            {
-                new Creature()
-                {
-                    Name = "Aura"
-                },
-                new Creature()
-                {
-                    Name = "Kree"
-                },
-                new Creature()
-                {
-                    Name = "Leilani"
-                },
-                new Creature()
-                {
-                    Name = "Artur"
-                }
-            };
+            var creatures = DeviceMemory.ReadFromDevice<List<Creature>>("creatures.lib");
+            CreatureLibrary = creatures == null ? new ObservableCollection<Creature>() : new ObservableCollection<Creature>(creatures);
+
+            var initiative = DeviceMemory.ReadFromDevice<List<Creature>>("initiative.lib");
+            CreaturesInInitiative = creatures == null ? new ObservableCollection<Creature>() : new ObservableCollection<Creature>(creatures);
+
+            AddToBoardCommand = new Command<Creature>(c => AddToInitiativeBoard(c));
+            RemoveFromBoardCommand = new Command<Creature>(c => RemoveFromInitiativeBoard(c));
         }
 
         void CreatureLibraryChanged(object sender, NotifyCollectionChangedEventArgs e) 
         {
             OnPropertyChanged(nameof(CreatureLibrary));
+            DeviceMemory.SaveToDevice(new List<Creature>(CreatureLibrary), "creatures.lib");
+        }
+
+        void CreaturesInInitiativeChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            OnPropertyChanged(nameof(CreaturesInInitiative));
+            DeviceMemory.SaveToDevice(new List<Creature>(CreatureLibrary), "initiative.lib");
+        }
+
+        void AddToInitiativeBoard(Creature creature)
+        {
+            CreatureLibrary.Remove(creature);
+            CreaturesInInitiative.Add(creature);
+        }
+
+        void RemoveFromInitiativeBoard(Creature creature)
+        {
+            CreaturesInInitiative.Remove(creature);
+            CreatureLibrary.Add(creature);
         }
     }
 }

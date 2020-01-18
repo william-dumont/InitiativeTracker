@@ -18,7 +18,11 @@
                 </SwipeItems>
             </SwipeView.LeftItems>
             <SwipeView.RightItems>
-                <SwipeItems Mode="Execute">
+                <SwipeItems Mode="Reveal">
+                    <SwipeItem Text="Edit"
+                               IconImageSource="trash"
+                               Invoked="Edit"
+                               BackgroundColor="{StaticResource PrimaryLightColor}"/>
                     <SwipeItem Text="Delete"
                                IconImageSource="trash"
                                Invoked="Delete"
@@ -53,7 +57,7 @@
                                        DownsampleToViewSize="True">
                         <forms:CachedImage.Transformations>
                             <transformations:TintTransformation EnableSolidColor="True"
-                                                                HexColor="{StaticResource SecondaryTextColorHex}"/>
+                                                                HexColor="{StaticResource SecondaryDarkColorHex}"/>
                         </forms:CachedImage.Transformations>
                     </forms:CachedImage>
                     <Label Text="{Binding Name}"

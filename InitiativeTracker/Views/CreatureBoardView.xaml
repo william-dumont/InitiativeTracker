@@ -34,22 +34,21 @@
                         Grid.Column="1"
                         Clicked="AddCreature"/>
             </Grid>
-            <CollectionView ItemsSource="{Binding ItemsSource, Source={x:Reference Self}}"
-                            Margin="10,0"
-                            x:Name="ItemsView">
+            <CollectionView ItemsSource="{Binding ItemsSource, Source={x:Reference Self}}">
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout ItemSpacing="10"
-                                       Orientation="Vertical"/>
+                    <LinearItemsLayout Orientation="Vertical"/>
                 </CollectionView.ItemsLayout>
-                <CollectionView.Header>
-                    <BoxView HeightRequest="0"/>
-                </CollectionView.Header>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <views:CreatureCellView OnAdded="AddToInitiativeBoard"
-                                                OnDeleted="DeleteCreature"
-                                                OnRaised="Raise"
-                                                OnLowered="Lower"/>
+                        <StackLayout>
+                            <views:CreatureCellView OnAdded="AddToInitiativeBoard"
+                                                    OnDeleted="DeleteCreature"
+                                                    OnRaised="Raise"
+                                                    OnLowered="Lower"
+                                                    OnEdited="EditCreature"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Margin="10,10,30,0"/>
+                        </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

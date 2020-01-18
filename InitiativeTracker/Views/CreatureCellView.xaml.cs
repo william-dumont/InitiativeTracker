@@ -17,6 +17,7 @@ namespace InitiativeTracker.Views
         public event EventHandler<Creature> OnRaised;
         public event EventHandler<Creature> OnAdded;
         public event EventHandler<Creature> OnDeleted;
+        public event EventHandler<Creature> OnEdited;
 
         public CreatureCellView()
         {
@@ -41,6 +42,11 @@ namespace InitiativeTracker.Views
         void Raise(object sender, EventArgs e)
         {
             OnRaised?.Invoke(this, BindingContext as Creature);
+        }
+
+        void Edit(object sender, EventArgs e)
+        {
+            OnEdited?.Invoke(this, BindingContext as Creature);
         }
     }
 }

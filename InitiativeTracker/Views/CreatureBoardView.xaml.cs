@@ -3,6 +3,7 @@ using InitiativeTracker.Popups;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,13 +16,23 @@ namespace InitiativeTracker.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CreatureBoardView : ContentView
     {
-        public static readonly BindableProperty ItemsSourceProperty = BindableProperty.Create(nameof(ItemsSource), typeof(IList<Creature>), typeof(CreatureBoardView));
-        public IList<Creature> ItemsSource
+        public static readonly BindableProperty ItemsSourceProperty = BindableProperty.Create(nameof(ItemsSource), typeof(ObservableCollection<Creature>), typeof(CreatureBoardView));
+        public ObservableCollection<Creature> ItemsSource
         {
-            get => GetValue(ItemsSourceProperty) as IList<Creature>;
+            get => GetValue(ItemsSourceProperty) as ObservableCollection<Creature>;
             set
             {
                 SetValue(ItemsSourceProperty, value);
+            }
+        }
+
+        public static readonly BindableProperty AddToBoardCommandProperty = BindableProperty.Create(nameof(AddToBoardCommand), typeof(ICommand), typeof(CreatureBoardView));
+        public ICommand AddToBoardCommand
+        {
+            get => GetValue(AddToBoardCommandProperty) as ICommand;
+            set
+            {
+                SetValue(AddToBoardCommandProperty, value);
             }
         }
 
@@ -34,24 +45,12 @@ namespace InitiativeTracker.Views
         {
             Creature creature = new Creature();
             ItemsSource.Add(creature);
-            RefreshView(null, null);
-            CreatureEditorPopup popup = new CreatureEditorPopup() { BindingContext = creature };
-            popup.EditionDone += RefreshView;
-            await PopupNavigation.Instance.PushAsync(popup);
-        }
-
-        void RefreshView(object sender, EventArgs e)
-        {
-            ItemsView.BatchBegin();
-            IList<Creature> creatures = ItemsSource;
-            ItemsSource = null;
-            ItemsSource = creatures;
-            ItemsView.BatchCommit();
+            await PopupNavigation.Instance.PushAsync(new CreatureEditorPopup() { BindingContext = creature });
         }
 
         void AddToInitiativeBoard(object sender, Creature creature)
         {
-
+            AddToBoardCommand?.Execute(creature);
         }
 
         void DeleteCreature(object sender, Creature creature)
@@ -71,6 +70,11 @@ namespace InitiativeTracker.Views
             int index = ItemsSource.IndexOf(creature);
             ItemsSource.Remove(creature);
             ItemsSource.Insert(Math.Min(index + 1, ItemsSource.Count), creature);
+        }
+
+        async void EditCreature(object sender, Creature e)
+        {
+            await PopupNavigation.Instance.PushAsync(new CreatureEditorPopup() { BindingContext = e });
         }
     }
 }
